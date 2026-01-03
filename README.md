@@ -1,89 +1,24 @@
-# Rooms Backend
+cd rooms-back
 
-Backend API server for the SmartRoom Meeting Room Booking System.
 
-## 🚀 Features
-
-- **Authentication API**: JWT-based authentication with HTTP-only cookies
-- **Session Management**: Secure session restoration and logout endpoints
-- **CORS Configuration**: Configured for frontend communication
-
-## 📦 Technologies
-
-- **Express.js**: Web application framework
-- **JWT**: JSON Web Tokens for authentication
-- **CORS**: Cross-Origin Resource Sharing
-- **Cookie Parser**: HTTP cookie parsing middleware
-
-## 🛠️ Installation
-
-```bash
 npm install
-```
 
-## 🏃 Development
 
-```bash
-npm run dev
-```
 
-The server will run on `http://localhost:3001`
+crate a file called ".env" in it write:
 
-## 🏗️ Production
 
-```bash
-npm start
-```
-
-## 📂 Project Structure
-
-```
-rooms-back/
-├── server.js          # Main Express server
-├── backend_logic.js   # Backend documentation and notes
-└── database/          # Database related files
-```
-
-## 🔐 API Endpoints
-
-### Authentication
-
-- `POST /auth/login` - User login
-  - Body: `{ user: { id, name, role } }`
-  - Returns: `{ success: true, user }`
-  - Sets HTTP-only cookie with JWT token
-
-- `GET /auth/me` - Get current user session
-  - Returns: `{ id, name, role }`
-  - Requires valid JWT token in cookie
-
-- `POST /auth/logout` - User logout
-  - Returns: `{ success: true }`
-  - Clears authentication cookie
-
-## 🔧 Configuration
-
-### Environment Variables
-
-Create a `.env` file in the root directory:
-
-```env
-PORT=3001
+"PORT=3001
 SECRET_KEY=your_super_secret_key_for_jwt
 FRONTEND_URL=http://localhost:3000
 NODE_ENV=development
-```
 
-**Important**: In production, always use environment variables for sensitive data like `SECRET_KEY`.
+SUPABASE_URL=https://qzzxywzgoqiqfcrthmiu.supabase.co
+SUPABASE_SERVICE_ROLE_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InF6enh5d3pnb3FpcWZjcnRobWl1Iiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc2NzQyODcxMiwiZXhwIjoyMDgzMDA0NzEyfQ.ZR083jDwKhcnCfgBs3QQdWSWukP-nYbjKberfZtLmqo
+SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InF6enh5d3pnb3FpcWZjcnRobWl1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njc0Mjg3MTIsImV4cCI6MjA4MzAwNDcxMn0.GQekTukDpX04XK-5Ycfn59Lr98HQ-Wec0d6fmvIvZXs"
 
-### CORS Configuration
 
-The server is configured to accept requests from `http://localhost:3000` by default. Update the CORS origin in `server.js` or use environment variables for different environments.
 
-## 🔒 Security Notes
+then:
 
-- JWT tokens are stored in HTTP-only cookies for security
-- In production, set `secure: true` in cookie options (requires HTTPS)
-- Always use a strong `SECRET_KEY` in production
-- Consider implementing rate limiting for authentication endpoints
-
+npm run dev
