@@ -326,6 +326,12 @@ app.delete('/api/bookings/:id', async (req, res) => {
   }
 });
 
-app.listen(PORT, () => {
-  console.log(`🚀 Backend API running at http://localhost:${PORT}`);
-});
+// Export for Vercel serverless functions
+export default app;
+
+// Only listen when running locally (not on Vercel)
+if (process.env.VERCEL !== '1') {
+  app.listen(PORT, () => {
+    console.log(`🚀 Backend API running at http://localhost:${PORT}`);
+  });
+}
