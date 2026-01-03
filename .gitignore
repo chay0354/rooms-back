@@ -28,5 +28,8 @@ yarn-debug.log*
 yarn-error.log*
 
 # Database
-*.sql
 *.sqlite
+
+# Allow schema and setup SQL files
+!database/schema.sql
+!database/create_user.sql
