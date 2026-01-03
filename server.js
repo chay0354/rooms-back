@@ -118,6 +118,20 @@ const mapBookingToDB = (booking) => ({
   phone_number: booking.phoneNumber,
 });
 
+// Root endpoint
+app.get('/', (req, res) => {
+  res.json({ 
+    message: 'Rooms Backend API', 
+    status: 'running',
+    endpoints: {
+      auth: '/auth/login, /auth/me, /auth/logout',
+      users: '/api/users',
+      rooms: '/api/rooms',
+      bookings: '/api/bookings'
+    }
+  });
+});
+
 // Auth endpoints
 app.post('/auth/login', (req, res) => {
   const { user } = req.body;
@@ -327,6 +341,7 @@ app.delete('/api/bookings/:id', async (req, res) => {
 });
 
 // Export for Vercel serverless functions
+// Vercel expects a handler function
 export default app;
 
 // Only listen when running locally (not on Vercel)
